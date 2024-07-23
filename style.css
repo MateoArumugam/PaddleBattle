@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    text-align: center;
+    background-color: rgb(0, 0, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+}
+
+.video-background {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.game-container {
+    position: relative;
+    z-index: 1;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+canvas {
+    border: 10px solid rgba(255, 255, 255, 0.217);
+    border-radius: 30px;
+    background: rgba(0, 0, 0, 0.5);
+    display: block;
+    margin: 0 auto;
+}
+
+.mario-title {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 3em;
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    text-shadow: 
+        3px 2px 0 #a0501d,  
+        5px 4px 0 #5372cc, 
+        3px 6px 0 #3c4935, 
+        5px 8px 0 #bf4336;
+}
+
+.mario-title span {
+    display: inline-block;
+    position: relative;
+    margin: 0 2px;
+}
+
