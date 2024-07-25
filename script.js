@@ -125,11 +125,11 @@ var Game = {
             // Ball collision with bounds
             if (this.ball.x <= 0) {
                 Pong._resetTurn.call(this, this.ai, this.player);
-                playSound('ballHitAudio'); // Play ball hit sound
+            
             }
             if (this.ball.x >= this.canvas.width - this.ball.width) {
                 Pong._resetTurn.call(this, this.player, this.ai);
-                playSound('ballHitAudio'); // Play ball hit sound
+                
             }
             if (this.ball.y <= 0) this.ball.moveY = DIRECTION.DOWN;
             if (this.ball.y >= this.canvas.height - this.ball.height) this.ball.moveY = DIRECTION.UP;
@@ -199,9 +199,9 @@ var Game = {
             } else {
                 this.color = this._generateRoundColor();
                 this.player.score = this.ai.score = 0;
-                this.player.speed += 0.5;
-                this.ai.speed += 1;
-                this.ball.speed += 1;
+                this.player.speed += 1;
+                this.ai.speed += 1.5;
+                this.ball.speed += 1.5;
                 this.round += 1;
                 playSound('scoreAudio'); // Play score sound
             }
