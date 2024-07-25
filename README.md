@@ -36,7 +36,6 @@
         <source src="win.mp3" type="audio/mp3">
         Your browser does not support the audio element.
     </audio>
-    
 
     <div class="game-container">
         <h1 class="mario-title">Mario's Paddle Battle</h1>
@@ -58,6 +57,7 @@
         const winAudio = document.getElementById('winAudio');
 
         function playSound(audioElement) {
+            audioElement.pause(); // Stop the audio if it's currently playing
             audioElement.currentTime = 0; // Rewind to the start
             audioElement.play().catch(error => {
                 console.log('Playback prevented: ' + error);
@@ -90,4 +90,5 @@
     <script src="script.js"></script>
 </body>
 </html>
+
 
