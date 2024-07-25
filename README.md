@@ -46,12 +46,48 @@
     
     <script>
         document.addEventListener('click', function() {
-            const audio = document.getElementById('bgAudio');
-            audio.play().catch(error => {
+            const bgAudio = document.getElementById('bgAudio');
+            bgAudio.play().catch(error => {
                 console.log('Playback prevented: ' + error);
             });
         }, { once: true }); // Ensures the event listener is called only once
+
+        const ballHitAudio = document.getElementById('ballHitAudio');
+        const scoreAudio = document.getElementById('scoreAudio');
+        const lostAudio = document.getElementById('lostAudio');
+        const winAudio = document.getElementById('winAudio');
+
+        function playSound(audioElement) {
+            audioElement.currentTime = 0; // Rewind to the start
+            audioElement.play().catch(error => {
+                console.log('Playback prevented: ' + error);
+            });
+        }
+
+        // Example functions to play specific sounds
+        function playBallHitSound() {
+            playSound(ballHitAudio);
+        }
+
+        function playScoreSound() {
+            playSound(scoreAudio);
+        }
+
+        function playLostSound() {
+            playSound(lostAudio);
+        }
+
+        function playWinSound() {
+            playSound(winAudio);
+        }
+
+        // Example usage within your game logic:
+        // playBallHitSound();
+        // playScoreSound();
+        // playLostSound();
+        // playWinSound();
     </script>
     <script src="script.js"></script>
 </body>
 </html>
+
