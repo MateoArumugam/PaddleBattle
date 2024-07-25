@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -44,48 +45,43 @@
     </div>
     
     <script>
-        document.addEventListener('click', function() {
-            const bgAudio = document.getElementById('bgAudio');
-            bgAudio.play().catch(error => {
-                console.log('Playback prevented: ' + error);
-            });
-        }, { once: true }); // Ensures the event listener is called only once
-
+        // Preload all audio elements
+        const bgAudio = document.getElementById('bgAudio');
         const ballHitAudio = document.getElementById('ballHitAudio');
         const scoreAudio = document.getElementById('scoreAudio');
         const lostAudio = document.getElementById('lostAudio');
         const winAudio = document.getElementById('winAudio');
 
-        function playSound(audioElement) {
-            audioElement.pause(); // Stop the audio if it's currently playing
-            audioElement.currentTime = 0; // Rewind to the start
-            audioElement.play().catch(error => {
+        const audioElements = [bgAudio, ballHitAudio, scoreAudio, lostAudio, winAudio];
+
+        // Ensure all audio elements are preloaded
+        audioElements.forEach(audio => {
+            audio.load();
+            audio.addEventListener('canplaythrough', () => {
+                console.log(`${audio.id} is ready to play`);
+            });
+        });
+
+        document.addEventListener('click', function() {
+            bgAudio.play().catch(error => {
                 console.log('Playback prevented: ' + error);
             });
+        }, { once: true }); // Ensures the event listener is called only once
+
+        function playSound(id) {
+            const audio = document.getElementById(id);
+            if (audio) {
+                audio.pause(); // Stop the audio if it's currently playing
+                audio.currentTime = 0; // Rewind to the start
+                audio.play().catch(error => {
+                    console.log('Playback prevented: ' + error);
+                });
+            }
         }
 
-        // Example functions to play specific sounds
-        function playBallHitSound() {
-            playSound(ballHitAudio);
-        }
+        // Rest of the game code remains the same
+        // ...
 
-        function playScoreSound() {
-            playSound(scoreAudio);
-        }
-
-        function playLostSound() {
-            playSound(lostAudio);
-        }
-
-        function playWinSound() {
-            playSound(winAudio);
-        }
-
-        // Example usage within your game logic:
-        // playBallHitSound();
-        // playScoreSound();
-        // playLostSound();
-        // playWinSound();
     </script>
     <script src="script.js"></script>
 </body>
